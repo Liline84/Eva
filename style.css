@@ -1,43 +1,38 @@
 body {
-.sent {
-  align-self: flex-end;
-  background: #dcf8c6;
-}
-
-.input-area {
-  display: flex;
-  padding: 8px;
-  background: #f0f0f0;
 }
 
 input {
-  width: 30%;
-  border-radius: 20px;
-  border: none;
-  padding: 8px;
+  width: 40%;
 }
 
-textarea {
-  flex: 1;
-  border-radius: 20px;
-  border: none;
-  padding: 8px;
-  resize: none;
+select {
+  width: 40%;
 }
 
 button {
   background: #25d366;
   border: none;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  margin-left: 5px;
+  width: 42px;
+  height: 42px;
   color: white;
   font-size: 18px;
   cursor: pointer;
 }
 
-button:hover {
-  background: #1da851;
-}
+/* mobile keyboard adaptation */
+@media (max-width: 600px) {
+  body {
+    align-items: flex-end;
+  }
 
+  .iphone-frame {
+    width: 100%;
+    height: 100vh;
+    border-radius: 0;
+  }
+
+  .chat-full {
+    height: 100vh;
+  }
+}
