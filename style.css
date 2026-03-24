@@ -9,7 +9,19 @@ body {
   height: 100vh;
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
-
+body {
+  background: url('https://i.imgur.com/8Jr6V7G.png') no-repeat center/cover;
+}
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(6px);
+}
+.chat-full {
+  background: url('https://raw.githubusercontent.com/WhatsApp/Assets/master/bg-chat-tile-light.png');
+}
 .app {
   padding: 8px;
   background: rgba(240,240,240,0.9);
