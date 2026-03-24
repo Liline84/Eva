@@ -1,4 +1,27 @@
 body {
+  margin: 0;
+  background: url('https://raw.githubusercontent.com/WhatsApp/Assets/master/bg-chat-tile-light.png');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.app {
+  padding: 8px;
+  background: rgba(240,240,240,0.9);
+  position: sticky;
+  bottom: 0;
+}
+
+input, select {
+  border-radius: 20px;
+  border: none;
+  padding: 10px;
+  font-size: 14px;
 }
 
 input {
@@ -36,3 +59,4 @@ button {
     height: 100vh;
   }
 }
+
