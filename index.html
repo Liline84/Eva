@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <title>WhatsApp iPhone UI</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -11,32 +11,27 @@
 <div class="app">
   <div class="iphone-frame">
 
-    <!-- Header -->
-    <div class="topbar">
-      <span>WhatsApp</span>
-    </div>
+    <div class="topbar">WhatsApp</div>
 
-    <div class="container">
+    <div class="chat-full">
+      <div class="messages" id="messages"></div>
 
-      <!-- Sidebar -->
-      <div class="sidebar" id="contacts"></div>
+      <div class="input-area">
+        <input type="tel" id="phone" placeholder="Numéro">
 
-      <!-- Chat -->
-      <div class="chat">
-        <div class="messages" id="messages"></div>
+        <select id="type">
+          <option value="info">Info</option>
+          <option value="promo">Promo</option>
+          <option value="urgent">Urgent</option>
+        </select>
 
-        <div class="input-area">
-          <input type="email" id="email" placeholder="Email">
-          <textarea id="message" placeholder="Message"></textarea>
-          <button id="sendBtn">➤</button>
-        </div>
+        <button id="sendBtn">➤</button>
       </div>
-
     </div>
+
   </div>
 </div>
 
-<script src="contacts.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
