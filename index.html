@@ -3,27 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WhatsApp Email Sender</title>
+  <title>WhatsApp iPhone UI</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="header">📧 WhatsApp Email Sender</div>
 
-  <div class="container">
-    <div class="sidebar" id="contacts"></div>
+<div class="app">
+  <div class="iphone-frame">
 
-    <div class="chat">
-      <div class="messages" id="messages"></div>
+    <!-- Header -->
+    <div class="topbar">
+      <span>WhatsApp</span>
+    </div>
 
-      <div class="input-area">
-        <input type="email" id="email" placeholder="Email destinataire">
-        <textarea id="message" placeholder="Votre message..."></textarea>
-        <button id="sendBtn">Envoyer</button>
+    <div class="container">
+
+      <!-- Sidebar -->
+      <div class="sidebar" id="contacts"></div>
+
+      <!-- Chat -->
+      <div class="chat">
+        <div class="messages" id="messages"></div>
+
+        <div class="input-area">
+          <input type="email" id="email" placeholder="Email">
+          <textarea id="message" placeholder="Message"></textarea>
+          <button id="sendBtn">➤</button>
+        </div>
       </div>
+
     </div>
   </div>
+</div>
 
-  <script src="contacts.js"></script>
-  <script src="app.js"></script>
+<script src="contacts.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
