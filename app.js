@@ -1,39 +1,36 @@
-document.getElementById('supportForm').addEventListener('submit', function(event) {
-  // Empêcher le rechargement de la page
-  event.preventDefault();
+document.getElementById('supportForm').addEventListener('submit', function(e) {
+  e.preventDefault();
 
-  // Récupération des valeurs du formulaire
   const phone = document.getElementById('phone').value;
   const reason = document.getElementById('reason').value;
-  const details = document.getElementById('details').value;
-
-  // Adresse du support officiel WhatsApp
   const supportEmail = "support@whatsapp.com";
-  const subject = encodeURIComponent("Demande d'assistance : Compte WhatsApp suspendu");
+  
+  // Base de données des messages automatiques
+  const templates = {
+    "ban_erreur": {
+      subject: "Compte suspendu par erreur",
+      body: `Bonjour,\n\nMon compte lié au numéro ${phone} a été suspendu. Je pense qu'il s'agit d'une erreur technique car je n'ai enfreint aucune règle. Merci de vérifier mon dossier.\n\nCordialement.`
+    },
+    "hacking": {
+      subject: "Aide : Compte piraté",
+      body: `Bonjour,\n\nJe n'ai plus accès à mon compte WhatsApp (${phone}). Je soupçonne un piratage. Pourriez-vous m'aider à sécuriser à nouveau mon compte ?\n\nMerci d'avance.`
+    },
+    "stolen": {
+      subject: "Téléphone volé - Désactivation de compte",
+      body: `Bonjour,\n\nMon téléphone a été volé. Merci de désactiver temporairement mon compte WhatsApp lié au numéro ${phone} pour éviter toute utilisation frauduleuse.\n\nMerci.`
+    },
+    "otp_issue": {
+      subject: "Problème de code de vérification",
+      body: `Bonjour,\n\nJe ne reçois plus mon code de vérification SMS pour le numéro ${phone}. Pourriez-vous vérifier s'il y a un blocage sur mon numéro ?\n\nCordialement.`
+    }
+  };
 
-  // Construction du corps du message en fonction de la raison
-  let bodyText = `Bonjour l'équipe de support WhatsApp,\n\nJe vous contacte car mon numéro de téléphone est actuellement bloqué sur votre service.\n\nMon numéro est : ${phone}\n\n`;
-
-  if (reason === 'erreur') {
-    bodyText += "Je pense que mon compte a été suspendu par erreur. Je respecte scrupuleusement les conditions d'utilisation de WhatsApp et n'ai envoyé aucun spam.\n";
-  } else if (reason === 'piratage') {
-    bodyText += "Je soupçonne que mon compte a été compromis ou piraté récemment. Pouvez-vous m'aider à en reprendre le contrôle de manière sécurisée ?\n";
-  } else if (reason === 'telephone_perdu') {
-    bodyText += "J'ai récemment perdu mon téléphone (ou il a été volé) et je souhaite m'assurer que personne ne puisse utiliser mon compte WhatsApp.\n";
-  }
-
-  if (details.trim() !== "") {
-    bodyText += `\nDétails supplémentaires :\n${details}\n`;
-  }
-
-  bodyText += "\nMerci de vérifier mon compte et de m'aider à rétablir l'accès.\n\nCordialement.";
-
-  // Encodage du texte pour l'URL
-  const encodedBody = encodeURIComponent(bodyText);
-
-  // Création du lien "mailto"
-  const mailtoLink = `mailto:${supportEmail}?subject=${subject}&body=${encodedBody}`;
-
-  // Ouverture du client mail par défaut de l'utilisateur
-  window.location.href = mailtoLink;
+  const selected = templates[reason];
+  
+  // Construction de l'URL Gmail (format spécial pour Gmail web)
+  // Si l'utilisateur est sur mobile, mailto fonctionnera mieux.
+  const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${supportEmail}&su=${encodeURIComponent(selected.subject)}&body=${encodeURIComponent(selected.body)}`;
+  
+  // On tente d'ouvrir Gmail dans un nouvel onglet
+  window.open(gmailLink, '_blank');
 });
