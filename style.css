@@ -1,94 +1,87 @@
-/* Darkened background, more ominous */
-body {
+/* Réinitialisation de base */
+* {
+  box-sizing: border-box;
   margin: 0;
-  background: url('https://i.imgur.com/8Jr6V7G.png') no-repeat center/cover;
-  /* Add a dark overlay for mystique */
-  position: relative;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Overlay to shroud the interface in shadows */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.6); /* Darker overlay for more intensity */
-  backdrop-filter: blur(8px); /* Enhance blur for more obscurity */
-  z-index: -1; /* Push behind all content */
+body {
+  background-color: #f4f7f6;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
 }
 
-/* The chat background now darker, more foreboding */
-.chat-full {
-  background: url('https://i.imgur.com/8Jr6V7G.png') no-repeat center/cover;
-  filter: brightness(0.8); /* Dim the chat to a sinister hue */
+/* Conteneur principal */
+.container {
+  background: #ffffff;
+  width: 100%;
+  max-width: 500px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  padding: 30px;
 }
 
-/* The app container - enveloped in shadows */
-.app {
-  padding: 8px;
-  background: rgba(0, 0, 0, 0.5);
-  border-radius: 12px;
-  box-shadow: 0 0 20px rgba(255, 0, 0, 0.5); /* Menacing glow */
-  position: sticky;
-  bottom: 0;
+header {
+  text-align: center;
+  margin-bottom: 25px;
 }
 
-/* Inputs and select elements - more menacing, more refined */
-input, select {
-  border-radius: 20px;
-  border: none;
-  padding: 10px;
+header h1 {
+  color: #128C7E; /* Vert officiel de WhatsApp */
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+header p {
+  color: #666;
   font-size: 14px;
-  background-color: rgba(255,255,255,0.1);
-  color: #fff;
-  backdrop-filter: blur(4px);
 }
 
-input {
-  width: 40%;
-  background-color: rgba(255,255,255,0.2);
-  color: #fff;
+/* Styles du formulaire */
+.form-group {
+  margin-bottom: 20px;
 }
 
-select {
-  width: 40%;
-  background-color: rgba(255,255,255,0.2);
-  color: #fff;
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 14px;
 }
 
-/* Button - ominous and commanding */
+input, select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+  transition: border-color 0.3s;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: #128C7E;
+}
+
+/* Bouton d'action */
 button {
-  background: linear-gradient(45deg, #ff0000, #8b0000);
-  border: none;
-  border-radius: 50%;
-  width: 42px;
-  height: 42px;
+  width: 100%;
+  background-color: #128C7E;
   color: white;
-  font-size: 18px;
+  border: none;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 6px;
   cursor: pointer;
-  box-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
-  transition: all 0.3s ease;
+  transition: background-color 0.3s;
 }
 
 button:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 25px rgba(255, 0, 0, 1);
-}
-
-/* Mobile adaptation, but more oppressive */
-@media (max-width: 600px) {
-  body {
-    align-items: flex-end;
-    background-color: #000; /* Darkness on small screens */
-  }
-
-  .iphone-frame {
-    width: 100%;
-    height: 100vh;
-    border-radius: 0;
-    border: 2px solid #ff0000; /* Menacing border */
-  }
-
-  .chat-full {
-    height: 100vh;
-  }
+  background-color: #075E54; /* Vert plus foncé */
 }
