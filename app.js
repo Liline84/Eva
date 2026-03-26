@@ -1,71 +1,39 @@
-// Import required libraries
-const puppeteer = require('puppeteer');
-const axios = require('axios');
+document.getElementById('supportForm').addEventListener('submit', function(event) {
+  // Empêcher le rechargement de la page
+  event.preventDefault();
 
-// Get the input fields and buttons
-const phoneInput = document.getElementById('phone');
-const devourBtn = document.getElementById('devourBtn');
-const messagesDiv = document.getElementById('messages');
+  // Récupération des valeurs du formulaire
+  const phone = document.getElementById('phone').value;
+  const reason = document.getElementById('reason').value;
+  const details = document.getElementById('details').value;
 
-// Add event listener to the devour button
-devourBtn.addEventListener('click', devourAccount);
+  // Adresse du support officiel WhatsApp
+  const supportEmail = "support@whatsapp.com";
+  const subject = encodeURIComponent("Demande d'assistance : Compte WhatsApp suspendu");
 
-// Function to devour a WhatsApp account
-async function devourAccount() {
-  const phone = phoneInput.value;
+  // Construction du corps du message en fonction de la raison
+  let bodyText = `Bonjour l'équipe de support WhatsApp,\n\nJe vous contacte car mon numéro de téléphone est actuellement bloqué sur votre service.\n\nMon numéro est : ${phone}\n\n`;
 
-  // Launch a new browser instance
-  const browser = await puppeteer.launch();
-  const page = await browser.newPage();
-
-  // Go to WhatsApp Web
-  await page.goto('https://web.whatsapp.com/');
-
-  // Wait for the QR code to appear
-  await page.waitForSelector('canvas');
-
-  // Scan the QR code using an existing WhatsApp account
-  // You'll need to find a way to automate this part or have someone scan the code manually
-
-  // Loop infinitely to spam the target's WhatsApp
-  while (true) {
-    // Enter the target's phone number
-    await page.type('input[placeholder="Phone number, contact name, or message"]', phone);
-
-    // Type a random message
-    const message = generateRandomMessage();
-    await page.type('div[role="textbox"]', message);
-
-    // Send the message
-    await page.click('button[data-icon="send"]');
-
-    // Delay for a short while before sending the next message
-    await new Promise(resolve => setTimeout(resolve, 500));
-
-    // Use Axios to report the target's phone number as spam
-    axios.post('/report_spam', {
-      phone: phone
-    })
-    .then((response) => {
-      console.log(response);
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+  if (reason === 'erreur') {
+    bodyText += "Je pense que mon compte a été suspendu par erreur. Je respecte scrupuleusement les conditions d'utilisation de WhatsApp et n'ai envoyé aucun spam.\n";
+  } else if (reason === 'piratage') {
+    bodyText += "Je soupçonne que mon compte a été compromis ou piraté récemment. Pouvez-vous m'aider à en reprendre le contrôle de manière sécurisée ?\n";
+  } else if (reason === 'telephone_perdu') {
+    bodyText += "J'ai récemment perdu mon téléphone (ou il a été volé) et je souhaite m'assurer que personne ne puisse utiliser mon compte WhatsApp.\n";
   }
 
-  // Close the browser
-  await browser.close();
-}
-
-// Function to generate random messages
-function generateRandomMessage() {
-  const words = ['hello', 'world', 'this', 'is', 'a', 'test'];
-  let message = '';
-
-  for (let i = 0; i < 20; i++) {
-    message += words[Math.floor(Math.random() * words.length)] + ' ';
+  if (details.trim() !== "") {
+    bodyText += `\nDétails supplémentaires :\n${details}\n`;
   }
 
-  return message;
-}
+  bodyText += "\nMerci de vérifier mon compte et de m'aider à rétablir l'accès.\n\nCordialement.";
+
+  // Encodage du texte pour l'URL
+  const encodedBody = encodeURIComponent(bodyText);
+
+  // Création du lien "mailto"
+  const mailtoLink = `mailto:${supportEmail}?subject=${subject}&body=${encodedBody}`;
+
+  // Ouverture du client mail par défaut de l'utilisateur
+  window.location.href = mailtoLink;
+});
