@@ -2,31 +2,45 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <title>WhatsApp Devourer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assistance Débannissement WhatsApp</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="app">
-  <div class="iphone-frame">
+  <div class="container">
+    <header>
+      <h1>Aide au Débannissement</h1>
+      <p>Générez une requête propre et professionnelle pour le support WhatsApp.</p>
+    </header>
 
-    <div class="topbar">WhatsApp Devourer</div>
+    <main>
+      <form id="supportForm">
+        <div class="form-group">
+          <label for="phone">Numéro de téléphone (avec l'indicatif pays, ex: +33...)</label>
+          <input type="tel" id="phone" placeholder="+33 6 12 34 56 78" required>
+        </div>
 
-    <div class="chat-full">
-      <div class="messages" id="messages"></div>
+        <div class="form-group">
+          <label for="reason">Raison présumée du blocage</label>
+          <select id="reason" required>
+            <option value="">-- Sélectionnez une raison --</option>
+            <option value="erreur">Banni par erreur / Sans raison apparente</option>
+            <option value="piratage">Mon compte a été piraté</option>
+            <option value="telephone_perdu">Téléphone perdu ou volé</option>
+          </select>
+        </div>
 
-      <div class="input-area">
-        <input type="tel" id="phone" placeholder="Victim's Phone Number">
+        <div class="form-group">
+          <label for="details">Détails supplémentaires (Optionnel)</label>
+          <textarea id="details" rows="4" placeholder="Expliquez brièvement votre situation..."></textarea>
+        </div>
 
-        <button id="devourBtn">DEVOUR</button>
-
-      </div>
-    </div>
-
+        <button type="submit" id="generateBtn">Générer et envoyer l'e-mail</button>
+      </form>
+    </main>
   </div>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/axios@0.21.1/dist/axios.min.js"></script>
-<script src="app.js"></script>
+
+  <script src="app.js"></script>
 </body>
 </html>
