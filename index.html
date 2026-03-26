@@ -3,43 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Assistance Débannissement WhatsApp</title>
+  <title>WhatsApp Support Assistant</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div class="container">
-    <header>
-      <h1>Aide au Débannissement</h1>
-      <p>Générez une requête propre et professionnelle pour le support WhatsApp.</p>
-    </header>
+  <header class="main-header">
+    <div class="logo">WA-Assistance</div>
+    <nav>
+      <span>Aide aux Utilisateurs</span>
+    </nav>
+  </header>
 
-    <main>
+  <div class="container">
+    <div class="card">
+      <div class="card-header">
+        <h2>Centre de Récupération</h2>
+        <p>Récupérez l'accès à votre compte en un clic.</p>
+      </div>
+
       <form id="supportForm">
         <div class="form-group">
-          <label for="phone">Numéro de téléphone (avec l'indicatif pays, ex: +33...)</label>
-          <input type="tel" id="phone" placeholder="+33 6 12 34 56 78" required>
+          <label>Votre Numéro de Téléphone</label>
+          <input type="tel" id="phone" placeholder="+33 6 00 00 00 00" required>
         </div>
 
         <div class="form-group">
-          <label for="reason">Raison présumée du blocage</label>
+          <label>Nature du Problème</label>
           <select id="reason" required>
-            <option value="">-- Sélectionnez une raison --</option>
-            <option value="erreur">Banni par erreur / Sans raison apparente</option>
-            <option value="piratage">Mon compte a été piraté</option>
-            <option value="telephone_perdu">Téléphone perdu ou volé</option>
+            <option value="ban_erreur">Suspension injustifiée (Erreur)</option>
+            <option value="hacking">Compte piraté / Accès perdu</option>
+            <option value="stolen">Téléphone volé ou perdu</option>
+            <option value="otp_issue">Problème de réception du code SMS</option>
           </select>
         </div>
 
-        <div class="form-group">
-          <label for="details">Détails supplémentaires (Optionnel)</label>
-          <textarea id="details" rows="4" placeholder="Expliquez brièvement votre situation..."></textarea>
-        </div>
-
-        <button type="submit" id="generateBtn">Générer et envoyer l'e-mail</button>
+        <button type="submit" id="devourBtn">Générer la requête Gmail</button>
       </form>
-    </main>
+    </div>
   </div>
+
+  <footer class="main-footer">
+    <p>&copy; 2026 WhatsApp Assistance Tool. Ce site n'est pas affilié à Meta ou WhatsApp Inc.</p>
+    <p><small>Utilisez ce service uniquement pour des demandes légitimes.</small></p>
+  </footer>
 
   <script src="app.js"></script>
 </body>
