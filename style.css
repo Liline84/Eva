@@ -1,87 +1,60 @@
-/* Réinitialisation de base */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+:root {
+  --primary-color: #128C7E;
+  --dark-color: #075E54;
+  --bg-color: #f0f2f5;
 }
 
-body {
-  background-color: #f4f7f6;
-  color: #333;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 20px;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
 
-/* Conteneur principal */
-.container {
-  background: #ffffff;
-  width: 100%;
-  max-width: 500px;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  padding: 30px;
-}
+body { background-color: var(--bg-color); min-height: 100vh; display: flex; flex-direction: column; }
 
-header {
-  text-align: center;
-  margin-bottom: 25px;
-}
-
-header h1 {
-  color: #128C7E; /* Vert officiel de WhatsApp */
-  font-size: 24px;
-  margin-bottom: 8px;
-}
-
-header p {
-  color: #666;
-  font-size: 14px;
-}
-
-/* Styles du formulaire */
-.form-group {
-  margin-bottom: 20px;
-}
-
-label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: 600;
-  font-size: 14px;
-}
-
-input, select, textarea {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 15px;
-  transition: border-color 0.3s;
-}
-
-input:focus, select:focus, textarea:focus {
-  outline: none;
-  border-color: #128C7E;
-}
-
-/* Bouton d'action */
-button {
-  width: 100%;
-  background-color: #128C7E;
+/* HEADER */
+.main-header {
+  background: var(--primary-color);
   color: white;
-  border: none;
-  padding: 14px;
-  font-size: 16px;
-  font-weight: bold;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.3s;
+  padding: 15px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-button:hover {
-  background-color: #075E54; /* Vert plus foncé */
+.logo { font-weight: bold; font-size: 1.2rem; }
+
+/* CONTAINER & CARD */
+.container { flex: 1; display: flex; justify-content: center; align-items: center; padding: 20px; }
+
+.card {
+  background: white;
+  width: 100%;
+  max-width: 450px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  overflow: hidden;
+}
+
+.card-header { background: #f8f9fa; padding: 25px; text-align: center; border-bottom: 1px solid #eee; }
+.card-header h2 { color: #333; margin-bottom: 5px; }
+
+form { padding: 30px; }
+
+.form-group { margin-bottom: 20px; }
+label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 14px; color: #555; }
+
+input, select {
+  width: 100%; padding: 12px; border: 1.5px solid #ddd; border-radius: 8px; font-size: 15px; outline: none;
+}
+
+input:focus { border-color: var(--primary-color); }
+
+button {
+  width: 100%; background: var(--primary-color); color: white; border: none; padding: 15px;
+  border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s;
+}
+
+button:hover { background: var(--dark-color); transform: translateY(-1px); }
+
+/* FOOTER */
+.main-footer {
+  background: #333; color: #aaa; text-align: center; padding: 20px; font-size: 0.8rem;
 }
